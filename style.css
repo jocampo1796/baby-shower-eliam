@@ -16,7 +16,7 @@ body{
   color:var(--text);
   min-height:100dvh;
   display:grid; place-items:center;
-  padding:24px;
+  padding:20px;
 }
 
 /* ====== Main (centra la tarjeta) ====== */
@@ -342,4 +342,5 @@ body{
 
   /* si usas abejas animadas, puedes ocultarlas en móvil para limpieza
   .bee{ display:none } */
+
 }
