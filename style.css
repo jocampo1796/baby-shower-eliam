@@ -216,6 +216,15 @@ body{
   .section-wishlist .btn{ min-height:40px; padding:10px 12px; font-size:14px; }
 
   .section-footer{ padding-top:8px; }
+    /* Frase de agradecimiento contenida (no gigante) */
+  .thanks{
+    max-width:26ch;
+    font-size:22px;
+    line-height:1.28;
+    margin:8px auto 12px;
+    padding-inline:10px;
+    bottom:90px;
+  }
 }
 
 /* === Ajuste fino para iPhone 12–15 (~390–393 px) — PRIMERO 400px === */
