@@ -100,7 +100,7 @@ body{
   margin:10px auto 16px;                       /* centrado + aire */
   padding-inline:10px;                          /* colchón lateral */
   text-wrap: balance;
-  bottom: 170px;
+  bottom: 150px;
 }
 
 /* ====== Botones ====== */
@@ -309,3 +309,4 @@ body{
 
   .section-footer{ padding-top:8px; }
 }
+
