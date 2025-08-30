@@ -100,7 +100,7 @@ body{
   margin:10px auto 16px;                       /* centrado + aire */
   padding-inline:10px;                          /* colchón lateral */
   text-wrap: balance;
-  bottom: 100px;
+  bottom: 170px;
 }
 
 /* ====== Botones ====== */
@@ -237,6 +237,7 @@ body{
     line-height:1.28;
     margin:8px auto 12px;
     padding-inline:10px;
+    bottom:170px;
   }
 
   /* Baja un poco a Pooh para abrir espacio con el texto */
@@ -308,6 +309,15 @@ body{
   .section-wishlist .btn{ min-height:40px; padding:10px 12px; font-size:14px; }
 
   .section-footer{ padding-top:8px; }
+
+  
+  /* Frase de agradecimiento contenida (no gigante) */
+  .thanks{
+    max-width:26ch;
+    font-size:22px;
+    line-height:1.28;
+    margin:8px auto 12px;
+    padding-inline:10px;
+    bottom:10px;
+  }
 }
-
-
