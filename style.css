@@ -344,3 +344,33 @@ body{
   .bee{ display:none } */
 
 }
+
+/* === Ajuste fino para iPhone 12–15 (~390–393 px) === */
+@media (max-width: 400px){
+  /* Mantén snap, pero NO obligues altura grande en el footer */
+  .card .section{ min-height: 56%; }            /* el resto de secciones */
+  .card .section-footer{
+    min-height: auto;                           /* compacta la 3ª sección */
+    padding-top: 6px;                           /* controla el hueco arriba */
+    padding-bottom: 10px;
+    padding-inline: 22px;                       /* aire lateral seguro */
+    border-top: 1px solid transparent;          /* evita colapso de márgenes en Safari */
+  }
+
+  /* Frase de agradecimiento más contenida */
+  .thanks{
+    max-width: 26ch;                            /* envuelve mejor las líneas */
+    font-size: 22px;
+    line-height: 1.25;
+    margin: 6px auto 12px;                      /* quitamos margen-top grande */
+    padding-inline: 8px;                        /* colchón interno */
+    text-wrap: balance;
+  }
+
+  /* Pooh un pelín más arriba para cerrar el hueco */
+  .pooh{ bottom: -2%; }                         /* antes -5% o -3% */
+
+  /* Pequeño ajuste entre sección 2 y 3 */
+  .section-wishlist{ margin-bottom: 4px; }
+}
+
