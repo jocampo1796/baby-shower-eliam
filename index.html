@@ -12,6 +12,70 @@
 
   <link rel="stylesheet" href="style.css" />
 </head>
+  <!-- Música de fondo -->
+<audio id="bgm" src="musica/beautiful-boy.mp3?v=2" preload="none" loop playsinline></audio>
+
+<!-- Botón flotante play/pause -->
+<button id="musicBtn" class="music-btn" aria-label="Reproducir música" aria-pressed="false">
+  <!-- Play -->
+  <svg class="icon icon-play" viewBox="0 0 24 24" aria-hidden="true">
+    <path d="M8 5v14l11-7z" fill="currentColor"/>
+  </svg>
+  <!-- Pause -->
+  <svg class="icon icon-pause" viewBox="0 0 24 24" aria-hidden="true">
+    <path d="M6 5h4v14H6zM14 5h4v14h-4z" fill="currentColor"/>
+  </svg>
+</button>
+
+<script>
+(()=> {
+  const audio = document.getElementById('bgm');
+  const btn   = document.getElementById('musicBtn');
+
+  // volumen suave
+  audio.volume = 0;
+  const saved = localStorage.getItem('bgmOn') === '1';
+
+  // iOS: sólo permite reproducir tras 1 gesto
+  document.addEventListener('pointerdown', firstGesture, {once:true, passive:true});
+  function firstGesture(){ if(saved) play(); }
+
+  btn.addEventListener('click', ()=> audio.paused ? play() : pause());
+
+  function fadeTo(vTarget, done){
+    const step = (vTarget > audio.volume) ? 0.06 : -0.06;
+    const id = setInterval(()=>{
+      let v = +(audio.volume + step).toFixed(2);
+      const finished = (step>0 && v>=vTarget) || (step<0 && v<=vTarget);
+      audio.volume = finished ? vTarget : Math.max(0, Math.min(1, v));
+      if(finished){ clearInterval(id); done && done(); }
+    }, 70);
+  }
+  async function play(){
+    try{
+      await audio.play();
+      btn.classList.add('playing');
+      btn.setAttribute('aria-pressed','true');
+      localStorage.setItem('bgmOn','1');
+      fadeTo(0.6);
+    }catch(e){}
+  }
+  function pause(){
+    fadeTo(0, ()=> audio.pause());
+    btn.classList.remove('playing');
+    btn.setAttribute('aria-pressed','false');
+    localStorage.setItem('bgmOn','0');
+  }
+
+  // opcional: pausa cuando la pestaña no está visible
+  document.addEventListener('visibilitychange', ()=>{
+    if(document.hidden && !audio.paused) audio.pause();
+    else if(!document.hidden && btn.classList.contains('playing') && localStorage.getItem('bgmOn')==='1'){
+      audio.play().catch(()=>{});
+    }
+  });
+})();
+</script>
 <body>
   <!-- ======= CONTENIDO PRINCIPAL ======= -->
   <main class="site-main" role="main">
@@ -125,6 +189,7 @@
   </footer>
 </body>
 </html>
+
 
 
 
