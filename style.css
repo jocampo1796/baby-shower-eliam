@@ -330,3 +330,31 @@ body{
     bottom:10px;
   }
 }
+/* Botón circular: combina con los azules de tu invitación */
+.music-btn{
+  position: fixed;
+  right: clamp(12px, 3vw, 20px);
+  bottom: clamp(14px, 4vh, 24px);
+  width: 56px; height: 56px;
+  border: 0; border-radius: 999px;
+  display: grid; place-items: center;
+  background: #4a6dd1;        /* azul acento */
+  color: #fff;
+  box-shadow: 0 12px 30px rgba(74,109,209,.35), inset 0 -2px 0 rgba(0,0,0,.1);
+  cursor: pointer; z-index: 1000;
+}
+.music-btn .icon{ width: 22px; height: 22px }
+.music-btn .icon-pause{ display: none; }   /* por defecto mostramos Play */
+
+/* Estado reproduciendo */
+.music-btn.playing{
+  background: #25D366;   /* verde estilo WhatsApp; cámbialo si prefieres azul */
+  color:#fff;
+}
+.music-btn.playing .icon-play{ display: none; }
+.music-btn.playing .icon-pause{ display: block; }
+
+/* En móvil deja un poco más arriba para no tapar el footer */
+@media (max-width: 420px){
+  .music-btn{ bottom: 76px; }
+}
